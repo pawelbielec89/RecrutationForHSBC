@@ -11,7 +11,6 @@ public class Customer {
         this.id = id;
         this.name = name;
         customerAddress = address;
-
     }
 
     public int getId() {

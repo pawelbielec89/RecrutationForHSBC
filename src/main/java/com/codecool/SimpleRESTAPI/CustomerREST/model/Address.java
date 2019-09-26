@@ -2,12 +2,12 @@ package com.codecool.SimpleRESTAPI.CustomerREST.model;
 
 import java.util.Objects;
 
-public class Adress {
+public class Address {
     private final String city;
     private final String street;
     private final String zipCode;
 
-    public Adress(String city, String street, String zipCode) {
+    public Address(String city, String street, String zipCode) {
         this.city = city;
         this.street = street;
         this.zipCode = zipCode;
@@ -29,10 +29,10 @@ public class Adress {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Adress adress = (Adress) o;
-        return Objects.equals(city, adress.city) &&
-                Objects.equals(street, adress.street) &&
-                Objects.equals(zipCode, adress.zipCode);
+        Address address = (Address) o;
+        return Objects.equals(city, address.city) &&
+                Objects.equals(street, address.street) &&
+                Objects.equals(zipCode, address.zipCode);
     }
 
     @Override
