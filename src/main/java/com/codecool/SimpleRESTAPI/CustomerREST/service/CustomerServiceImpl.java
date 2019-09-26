@@ -2,7 +2,9 @@ package com.codecool.SimpleRESTAPI.CustomerREST.service;
 
 import com.codecool.SimpleRESTAPI.CustomerREST.model.Customer;
 import com.codecool.SimpleRESTAPI.CustomerREST.repository.CustomerRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository repository;
