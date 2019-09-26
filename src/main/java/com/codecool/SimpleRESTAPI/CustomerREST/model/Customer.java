@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Customer {
     private final int id;
     private final String name;
-    private final Adress customerAdress;
+    private final Address customerAddress;
 
-    public Customer(int id, String name, Adress adress){
+    public Customer(int id, String name, Address address){
         this.id = id;
         this.name = name;
-        customerAdress = adress;
+        customerAddress = address;
 
     }
 
@@ -22,8 +22,8 @@ public class Customer {
         return name;
     }
 
-    public Adress getCustomerAdress() {
-        return customerAdress;
+    public Address getCustomerAddress() {
+        return customerAddress;
     }
 
     @Override
@@ -33,11 +33,11 @@ public class Customer {
         Customer customer = (Customer) o;
         return id == customer.id &&
                 Objects.equals(name, customer.name) &&
-                Objects.equals(customerAdress, customer.customerAdress);
+                Objects.equals(customerAddress, customer.customerAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, customerAdress);
+        return Objects.hash(id, name, customerAddress);
     }
 }
