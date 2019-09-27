@@ -7,7 +7,7 @@ public class Customer {
     private final String name;
     private final Address customerAddress;
 
-    public Customer(int id, String name, Address address){
+    public Customer(int id, String name, Address address) {
         this.id = id;
         this.name = name;
         customerAddress = address;

@@ -2,11 +2,12 @@ package com.codecool.SimpleRESTAPI.CustomerREST.repository;
 
 import com.codecool.SimpleRESTAPI.CustomerREST.model.Customer;
 import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class CustomerRepositoryImpl implements CustomerRepository{
+public class CustomerRepositoryImpl implements CustomerRepository {
 
     private final Map<Integer, Customer> customers;
 
@@ -27,6 +28,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     private int generateId() {
-        return customers.keySet().stream().mapToInt(id -> id).max().orElse(0) +1;
+        return customers.keySet().stream()
+                .mapToInt(id -> id)
+                .max()
+                .orElse(0)
+                + 1;
     }
 }

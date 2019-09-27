@@ -16,37 +16,43 @@ public class CustomerControllerImpl implements CustomerController {
 
     private final CustomerServiceImpl service;
 
-    public CustomerControllerImpl(CustomerServiceImpl service){
+    public CustomerControllerImpl(CustomerServiceImpl service) {
         this.service = service;
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Customer> getById(@PathVariable int id) {
-        if(id<1) throw new InvalidCustomerIdException(id);
-        if(service.getById(id)==null) throw new CustomerNotFoundException(id);
-    return new ResponseEntity<Customer>(service.getById(id), HttpStatus.OK);
-}
+        if (id < 1) {
+            throw new InvalidCustomerIdException(id);
+        }
+        if (service.getById(id) == null) {
+            throw new CustomerNotFoundException(id);
+        }
+        return new ResponseEntity<Customer>(service.getById(id), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/add")
     public ResponseEntity<Customer> add(@RequestBody Customer customer) {
-        if(customerIsValid(customer)) {
+        if (customerIsValid(customer)) {
             return new ResponseEntity<Customer>(service.add(customer), HttpStatus.CREATED);
         } else {
             throw new WrongJSONFormatException();
         }
     }
 
-    private boolean customerIsValid(Customer customer){
+    private boolean customerIsValid(Customer customer) {
         return isValid(customer.getCustomerAddress()) &&
                 isValid(customer.getName()) &&
                 isValid(customer.getCustomerAddress().getCity()) &&
                 isValid(customer.getCustomerAddress().getStreet()) &&
                 isValid(customer.getCustomerAddress().getZipCode());
     }
-    private boolean isValid(String str){
+
+    private boolean isValid(String str) {
         return str != null && !str.equals("");
     }
-    private boolean isValid(Address address){
+
+    private boolean isValid(Address address) {
         return address != null;
     }
 }
